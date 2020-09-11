@@ -1,7 +1,7 @@
 <launch>
     <node pkg="roboclyde_docker_container" type="dynamic_tf_world.py" name="world_broadcaster" />
 <!--    
-<node pkg="robot_localization" type="ekf_localization_node" name="localization" clear_params="true">
+    <node pkg="robot_localization" type="ekf_localization_node" name="localization" clear_params="true">
         <param name="odom0" value="controllers/diff_drive/odom"/>
         <param name="imu0" value="zed2/imu/data"/>
 
@@ -36,5 +36,5 @@
         <param name="base_link_frame" value="base_link"/>
     </node>
 -->
-<remap from="/zed2/odom" to="/odometry/filtered"/>
+    <remap from="/zed2/odom" to="/odometry/filtered"/>
 </launch>
