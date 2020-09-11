@@ -20,12 +20,13 @@ def write_to_file():
     global xArray
     global yArray
     global tArary
+    global zArray
 
     f = open("Timed_Coordinates.csv","a+")
     try:
         writer = csv.writer(f)
         for i in range(len(xArray)):
-            writer.writerow([tArray[i],xArray[i],yArray[i]])
+            writer.writerow([tArray[i],xArray[i],yArray[i]],zArray[i])
     finally:
         f.close()
 
@@ -33,6 +34,7 @@ def callback(data):
     global xArray
     global yArray
     global tArray
+    global zArray
     global second
 
     recorded_second = datetime.now().strftime("%S")
@@ -42,24 +44,27 @@ def callback(data):
         pose = PoseStamped()
 
         pose.pose.position.x = float(data.pose.pose.position.x)
-        print(pose.pose.position.x)
         pose.pose.position.y = float(data.pose.pose.position.y)
+        pose.pose.position.z = float(data.pose.pose.position.z)
         t = datetime.now().strftime("%H:%M:%S")
 
         xArray.append(pose.pose.position.x)
         yArray.append(pose.pose.position.y)
         tArray.append(t)
+        zArray.append(pose.pose.position.z)
 
         if len(xArray) > 10:
             write_to_file()
             xArray = []
             yArray = []
             tArray = []
+            zArray = []
 
 def main():
     global xArray
     global yArray
     global tArray
+    global zArray
     global second
 
     second = datetime.now().strftime("%S")
@@ -67,6 +72,7 @@ def main():
     xArray = []
     yArray = []
     tArray = []
+    zArray = []
     os.chdir("/home")
     if not os.path.exists("roboclyde_out"):
         os.mkdir("roboclyde_out")
@@ -78,7 +84,7 @@ def main():
     f = open("Timed_Coordinates.csv","w+")
     try:
         writer = csv.writer(f)
-        writer.writerow(("Date_Time","x (m)", "y (m)"))
+        writer.writerow(("Date_Time","x (m)", "y (m)", "z (m)"))
     finally:
         f.close()
 
