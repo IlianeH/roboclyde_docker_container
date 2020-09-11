@@ -21,6 +21,10 @@ echo "ROS_MASTER_URI=${ROS_MASTER_URI}" >> /etc/environment
 
 chmod +x /catkin_ws/src/roboclyde_docker_container/scripts/*
 
+cd /catkin_ws
+
+catkin build
+
 ##### 4: finally to start the image and coordinate saver nodes run:
 
 roslaunch roboclyde_docker_container startup.launch
