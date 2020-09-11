@@ -1,0 +1,12 @@
+<launch>
+  <include file="$(find roboclyde_docker_container)\launch\track_pose.launch"/>
+  <node name="octomap" pkg="octomap_server" type="octomap_server_node">
+        <param name="frame_id" value="/odom"/>
+        <param name="resolution" value=".05"/>
+        <param name="base_frame_id" value="base_link"/>
+        <param name="height_map" value="false"/>
+        <param name="sensor_model/max_range" value="10"/>
+        <param name="latch" value="false"/>
+        <remap from="cloud_in" to="/zed2/point_cloud/cloud_registered"/>
+    </node>
+</launch>

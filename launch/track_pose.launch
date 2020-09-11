@@ -1,0 +1,8 @@
+<launch>
+
+    <include file="$(find roboclyde_docker_container)\launch\filter_data.launch"/>
+
+    <node pkg="roboclyde_docker_container" type="path_plotter.py" name="path_plotter"/>
+    <node pkg="roboclyde_docker_container" type="save_position.py" name="save_postitions"/>
+
+</launch>

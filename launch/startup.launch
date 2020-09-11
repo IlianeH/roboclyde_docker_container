@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="image_saver" pkg="roboclyde_docker_container" type="image_saver.py"/>
+  <node name="timed_image_saver" pkg="roboclyde_docker_container" type="camera_15s.py"/>
+
+</launch>
