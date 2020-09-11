@@ -15,7 +15,7 @@ def callback(msg):
     angY = msg.pose.pose.orientation.y
     angZ = msg.pose.pose.orientation.z
     odom_quat = tf.transformations.quaternion_from_euler(0.0, 0.0, angZ)
-    br.sendTransform((x, y, z),
+    br.sendTransform((x, y, z),     # Change z to 0.0 to remove height position
                     odom_quat,
                     rospy.Time.now(),
                     "base_link",
