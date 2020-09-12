@@ -88,8 +88,7 @@ def image_callback_Z2L(msg):
         timestamp = datetime.now()
         timestamp_string = timestamp.strftime("%d-%m-%Y_%H-%M-%S")
         cv2.imwrite('Zed2_Left/'+timestamp_string+'.jpeg', cv2_img)
-        rate = rospy.Rate(15)
-        rate.sleep(15)
+        rospy.sleep(15.)
 
 def main():
     rospy.init_node('image_listener')
