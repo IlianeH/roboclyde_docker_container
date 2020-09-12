@@ -23,6 +23,8 @@ chmod +x /catkin_ws/src/roboclyde_docker_container/scripts/*
 
 cd /catkin_ws
 
+catkin config --extend /opt/ros/melodic
+
 catkin build
 
 ##### 4: finally to start the image and coordinate saver nodes run:
