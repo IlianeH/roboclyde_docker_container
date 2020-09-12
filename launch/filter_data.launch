@@ -36,5 +36,4 @@
         <param name="base_link_frame" value="base_link"/>
     </node>
 -->
-    <remap from="/zed2/odom" to="/odometry/filtered"/>
 </launch>
